@@ -25,12 +25,15 @@ const dashButtons = [
 
 dashButton(dashButtons.map(button => button.address), null, null, 'all').on('detected', (address) => {
   const button = dashButtons.find(button => button.address === address);
-  console.log(new Date(), 'press detected!', address, button.brand);
-  wss.clients.forEach((client) => {
-    if (client.readyState === WebSocket.OPEN) {
-      client.send(button.brand);
-    }
-  })
+
+  if(button.brand == "Oral-B"){
+    console.log(new Date(), 'press detected!', address, button.brand);
+    wss.clients.forEach((client) => {
+        if (client.readyState === WebSocket.OPEN) {
+        client.send(button.brand);
+        }
+    })
+  }
 });
 
 wss.on('connection', (ws) => {

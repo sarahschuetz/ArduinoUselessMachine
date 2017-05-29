@@ -15,8 +15,7 @@ board.on('ready', function ready() {
       switchFlipped = !switchFlipped;
 
       if(switchFlipped) {
-        servo.to(180);
-        setTimeout(() => {servo.to(0);}, 1000);
+        
       }
 
       console.log('switch flipped!', switchFlipped ? 'On' : 'Off');
